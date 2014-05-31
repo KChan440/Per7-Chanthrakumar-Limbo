@@ -1,4 +1,4 @@
-Per7-Chanthrakumar-Osu
+Per7-Chanthrakumar-Limbo
 ======================
 
-Clone of the popular game, Osu.
+A dark minimalist platform game.
