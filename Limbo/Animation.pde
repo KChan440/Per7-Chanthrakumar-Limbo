@@ -19,7 +19,7 @@ class Animation {
   }
 int i = 0;
   void display(float xpos, float ypos) {
-if(keyPressed){
+if(keyCode == RIGHT && keyPressed){  
     frame = (frame+1) % (imageCount);
     image(images[frame], xpos + (i* 10), ypos);
     i++;
