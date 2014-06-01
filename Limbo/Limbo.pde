@@ -7,7 +7,7 @@ float drag = 30.0;
 void setup() {
   size(1000, 1000);
   background(255, 204, 0);
-  frameRate(10);
+  frameRate(13);
   animation1 = new Animation("limbo", 11);
   ypos = height * 0.25;
 }
