@@ -23,8 +23,8 @@ if(keyCode == RIGHT && keyPressed){
     frame = (frame+1) % (imageCount);
     image(images[frame], xpos + (i* 10), ypos);
     i++;
-  }else{
-    image(images[0], xpos + (i * 10), ypos);
+  }else{  
+    image(images[1], xpos + (i * 10), ypos);
   }
   }
   
