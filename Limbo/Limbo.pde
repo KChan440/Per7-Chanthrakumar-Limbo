@@ -12,11 +12,7 @@ void setup() {
 
 void draw() { 
   // Display the sprite at the position xpos, ypos
-  if (mousePressed) {
     background();
-    animation1.display(xpos-animation1.getWidth()/10, ypos);
-  } else {
-    background();
-    animation1.display(xpos-animation1.getWidth()/10, ypos);
-  }
+    animation1.display(xpos, ypos);
+  
 }
