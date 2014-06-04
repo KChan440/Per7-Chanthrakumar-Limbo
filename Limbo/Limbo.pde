@@ -9,10 +9,10 @@ void setup() {
   background();
   frameRate(14);
   animation1 = new Animation("limbo", 11);
-  xpos = 100;
+  xpos = 500;
   ypos = 0;
   speed = 0;
-  gravity = 0.0;
+  gravity = 6.0;
 }
 
 void draw() { 

@@ -15,14 +15,22 @@ class Animation {
     }
   }
 
-      int i = 0;  
+  int i = 0;  
+  float currentPlace = 0;
   void display(float xpos, float ypos) {
+    
+    //prior to any keys being pressed
+    if (keyCode == 0 && (!keyPressed)) {
+      frame = (frame + 1) % (imageCount);
+      image(images[0], xpos + (i*13), ypos);
+    }
 
+    //Right movement
     if (keyCode == RIGHT && keyPressed) {  
       frame = (frame+1) % (imageCount);
       image(images[frame], xpos + (i* 13), ypos);
       i++;
-    } else {  
+    } else  if (keyCode == RIGHT && (!keyPressed)) {  
       image(images[2], xpos + (i * 13), ypos);
     }
   }
