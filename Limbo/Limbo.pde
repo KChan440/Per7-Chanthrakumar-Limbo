@@ -12,7 +12,7 @@ void setup() {
   xpos = 100;
   ypos = 0;
   speed = 0;
-  gravity = 2.0;
+  gravity = 0.0;
 }
 
 void draw() { 

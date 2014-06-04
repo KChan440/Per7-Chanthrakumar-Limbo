@@ -14,9 +14,10 @@ class Animation {
       images[i] = loadImage(filename);
     }
   }
-  int i = 0;
-  
+
+      int i = 0;  
   void display(float xpos, float ypos) {
+
     if (keyCode == RIGHT && keyPressed) {  
       frame = (frame+1) % (imageCount);
       image(images[frame], xpos + (i* 13), ypos);
