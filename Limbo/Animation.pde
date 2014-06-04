@@ -1,6 +1,5 @@
 
 // Class for animating a sequence of GIFs
-
 class Animation {
   PImage[] images;
   int imageCount;
@@ -9,8 +8,6 @@ class Animation {
   Animation(String imagePrefix, int count) {
     imageCount = count;
     images = new PImage[imageCount];
-
-
     for (int i = 0; i < imageCount; i++) {
       // Use nf() to number format 'i' into four digits
       String filename = imagePrefix + nf(i, 4) + ".gif";
@@ -18,13 +15,14 @@ class Animation {
     }
   }
   int i = 0;
+  
   void display(float xpos, float ypos) {
     if (keyCode == RIGHT && keyPressed) {  
       frame = (frame+1) % (imageCount);
-      image(images[frame], xpos + (i* 10), ypos);
+      image(images[frame], xpos + (i* 13), ypos);
       i++;
     } else {  
-      image(images[2], xpos + (i * 10), ypos);
+      image(images[2], xpos + (i * 13), ypos);
     }
   }
 
