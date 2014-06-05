@@ -7,12 +7,12 @@ float gravity;
 
 void setup() {
   background();
-  frameRate(14);
+  frameRate(13);
   animation1 = new Animation("limbo", 11);
-  xpos = 500;
+  xpos = 15;
   ypos = 0;
   speed = 0;
-  gravity = 6.0;
+  gravity = 9.0;
 }
 
 void draw() { 
