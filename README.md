@@ -1,4 +1,4 @@
 Per7-Chanthrakumar-Limbo
 ======================
 
-A dark minimalist platform game.
+A dark minimalist side-scrolling platform game.
