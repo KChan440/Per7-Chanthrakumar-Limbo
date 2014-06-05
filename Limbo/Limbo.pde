@@ -1,4 +1,6 @@
-Animation animation1;
+Animation Tack;
+Animation Tack2;
+
 
 float xpos;
 float ypos;
@@ -7,26 +9,25 @@ float gravity;
 
 void setup() {
   background();
-  frameRate(13);
-  animation1 = new Animation("limbo", 11);
-  xpos = 15;
+  frameRate(11);
+  Tack = new Animation("limbo", 11);
+  xpos = 200;
   ypos = 0;
   speed = 0;
-  gravity = 9.0;
+  gravity = .0;
 }
 
 void draw() { 
   // Display the sprite at the position xpos, ypos
-    background();    
-    animation1.display(xpos, ypos);
+    background();
+    Tack.display(xpos, ypos);
     ypos = ypos + speed;
-    speed = speed + gravity;
-    
-    if(speed < 0.65 && ypos > 370){
+    speed = speed + gravity;  
+    if(speed < 0.65 && ypos > 800){
       speed = 0;
       gravity = 0;
     }
-    else if(ypos > 370){
+    else if(ypos > 800){
       speed = speed * -.65;
     }
 }
