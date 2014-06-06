@@ -7,6 +7,8 @@ class Animation {
   float y;
   boolean moved;
   String filename;
+  int xfoot;
+  int yfoot;
 
   Animation(String imagePrefix, int count) {
     imageCount = count;    
@@ -34,13 +36,13 @@ class Animation {
     //prior to any keys being pressed
     if (keyCode == 0 && (!keyPressed)) {
       frame = (frame + 1) % (imageCount);
-      image(Tack[1], xpos + (i*5), ypos);
+      image(Tack[1], xpos, ypos);
       moved = false;
     }
 
     //Right movement if not moved
     if (keyCode == RIGHT && keyPressed && (!moved) ) {
-      xpos = xpos + (i*3);  
+      xpos = xpos + (i*4);  
       i++;
       frame = (frame+1) % (imageCount);
       image(Tack[frame], xpos, ypos);
