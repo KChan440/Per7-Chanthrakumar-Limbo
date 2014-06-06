@@ -1,17 +1,23 @@
+static boolean Left;
 // Class for animating a sequence of GIFs
 class Animation {
   PImage[] Tack;
+  PImage[] Tack2;
   int imageCount;
   int frame;
   float x;
   float y;
   boolean moved;
   String filename;
-  int xfoot;
-  int yfoot;
+
 
   Animation(String imagePrefix, int count) {
     imageCount = count;    
+  Tack2 = new PImage[imageCount];
+  for(int i =0; i < imageCount; i++){
+    filename = "limboLeft" + nf(i, 4) + ".png";
+     Tack2[i] = loadImage(filename);     
+  }
     Tack = new PImage[imageCount];
     for (int i = 0; i < imageCount; i++) {
       // Use nf() to number format 'i' into four digits
@@ -21,15 +27,6 @@ class Animation {
   }
 
   int i = 0;  
-
-  void move( Displaceable l , int divisor )
-  {
-    int amt = int(speed/constrain(divisor,1,1000));
-    if( amt > 0 )
-    {
-      l.displace( amt );
-    }
-  }
 
   void display(float xpos, float ypos) {
 
@@ -42,33 +39,37 @@ class Animation {
 
     //Right movement if not moved
     if (keyCode == RIGHT && keyPressed && (!moved) ) {
-      xpos = xpos + (i*4);  
+      Left = false;
+      xpos = xpos + (i*3.5);  
       i++;
       frame = (frame+1) % (imageCount);
       image(Tack[frame], xpos, ypos);
       x = xpos;
     } else if (keyCode == RIGHT && (!keyPressed) && (!moved)) {  
+      Left = false;
       image(Tack[2], x, ypos);
       moved = true;
     }
 
     //Right movement if moved before
     if (keyCode == RIGHT && keyPressed && moved) {
+      Left = false;
       frame = (frame + 1 )%(imageCount);
       image(Tack[frame], x, ypos);
       x += 2;
     } else if (keyCode == RIGHT && (!keyPressed) && moved) {
+      Left = false;
       image(Tack[2], x, ypos);
     }
 
     // movement if moved before
     if (keyCode == LEFT && keyPressed && moved) {
+      Left = true;
       frame = (frame+1) % (imageCount);
-      image(Tack[frame], x, ypos);
+      image(Tack2[frame], x, ypos);
       x -= 2;
     } else if (keyCode == LEFT && (!keyPressed)) {
-      this.filename = "limbo";
-      image(Tack[2], x, ypos);
+      image(Tack2[2], x, ypos);
     }
   }
 

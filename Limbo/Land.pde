@@ -1,4 +1,4 @@
-class Land implements Displaceable{
+class Land{
   int maxHeight;
   int h;
   ArrayList values;
@@ -11,7 +11,7 @@ class Land implements Displaceable{
     values = new ArrayList( width );
     this.maxHeight = maxHeight;
     h = 20; 
-    p = 1.0;
+    p = 1000.0;
     dp = .002;
     fillValues();
     this.col = col;
@@ -46,30 +46,14 @@ class Land implements Displaceable{
       }
     }
   }
- 
-  void displace( int amt ){
-    amt = constrain( amt, 0, width-1 );
-    for( int i = 0; i < amt; i++ ){
-      values.remove( 0 );
-      values.add( nextValue() );
-    }
-  }
- 
-  int getY( int x ){
-    return (Integer) values.get( x );
+
+  int getY(int x){
+    return (Integer) values.get(x);
   }
  
   int nextValue(){
     int yVal = height - int( noise( p ) * maxHeight );
     p += dp;
     return yVal;
-  }
- 
-  void stripe( int gap ){
-    stripe = gap;
-  }
- 
-  void plain(){
-    stripe = 0;
   }
 } 
