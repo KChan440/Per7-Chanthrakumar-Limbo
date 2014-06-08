@@ -1,4 +1,5 @@
-class Land{
+class Land {
+
   int maxHeight;
   int h;
   ArrayList values;
@@ -8,7 +9,7 @@ class Land{
   color col;
  
   Land( int maxHeight, color col ){
-    values = new ArrayList( width );
+    values = new ArrayList();
     this.maxHeight = maxHeight;
     h = 20; 
     p = 1000.0;
@@ -49,7 +50,11 @@ class Land{
   }
 
   int getY(int x){
+    if(x > values.size() - 2){
+      return (Integer) values.get(values.size() -1 );
+    }else{
     return (Integer) values.get(x);
+  }
   }
  
   int nextValue(){
@@ -57,4 +62,5 @@ class Land{
     p += dp;
     return yVal;
   }
-} 
+}
+
