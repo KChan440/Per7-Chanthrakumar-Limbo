@@ -12,10 +12,11 @@ class Land{
     this.maxHeight = maxHeight;
     h = 20; 
     p = 1000.0;
-    dp = .002;
+    dp = .0005;
     fillValues();
     this.col = col;
   }
+  
  
   void fillValues(){
     for( int i = 0; i < width; i++ ){

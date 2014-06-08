@@ -40,10 +40,10 @@ class Animation {
     //Right movement if not moved
     if (keyCode == RIGHT && keyPressed && (!moved) ) {
       Left = false;
-      xpos = xpos + (i*3.5);  
+      xpos = xpos + (i*2.5);  
       i++;
       frame = (frame+1) % (imageCount);
-      image(Tack[frame], xpos, ypos);
+       image(Tack[frame], xpos, ypos);
       x = xpos;
     } else if (keyCode == RIGHT && (!keyPressed) && (!moved)) {  
       Left = false;
