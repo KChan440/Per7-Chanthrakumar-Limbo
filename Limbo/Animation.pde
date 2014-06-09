@@ -53,7 +53,7 @@ class Animation {
     //Right movement if not moved
     if (keyCode == RIGHT && keyPressed && (!moved) ) {
       Left = false;
-      xpos = xpos + (i*2.5);  
+      xpos = xpos + (i*5);
       i++;
       frame = (frame+1) % (imageCount);
       image(Tack[frame], xpos, ypos);
@@ -69,7 +69,7 @@ class Animation {
       Left = false;
       frame = (frame + 1 )%(imageCount);
       image(Tack[frame], x, ypos);
-      x += 2;
+      x += 5;
     } else if (keyCode == RIGHT && (!keyPressed) && moved) {
       Left = false;
       image(Tack[2], x, ypos);
@@ -80,7 +80,7 @@ class Animation {
       Left = true;
       frame = (frame+1) % (imageCount);
       image(Tack2[frame], x, ypos);
-      x -= 2;
+      x -= 5;
     } else if (keyCode == LEFT && (!keyPressed)) {
       image(Tack2[2], x, ypos);
     }

@@ -1,3 +1,4 @@
+static int level = 0;
 import java.util.LinkedList;
 Animation Tack;
 Animation Cloudy;
@@ -14,6 +15,12 @@ float speed;
 float gravity;
 PFont f;
 PImage blood;
+PImage bg;
+PImage angel;
+PImage sword;
+float offset = 0;
+float easing = 0.05;
+boolean cutscene = true;
 Land land;
 
 void setup() {
@@ -24,40 +31,57 @@ void setup() {
   Cloud = new Cloudy("frame_", 50);
   player = minim.loadFile(songs.get(0), 4000);
   lightning = minim.loadFile(songs.get(2), 4000);
-  player.play();
+  angel = loadImage("Angel.png");
+  //player.play();
   land = new Land(500, 0);
   newLand = new Land(250, 0);
   xpos = 200;
   ypos = land.getY((int) Tack.x) - 81;
-  speed = 0;
-  gravity = 2.0;
   f = createFont("BillionStars", 16, true);
   blood = loadImage("Bolt.gif"); 
+  bg = loadImage("Limbo.jpg");
+  sword = loadImage("sword.png");
   stroke(0);
   noFill();
 }
 
 void draw() { 
   // Display the sprite at the position given
-  background();
-  if (mousePressed) {
-    if (mouseX > 500 && mouseX < 550 && mouseY>300 && mouseY<350) {
+  background(bg);  
+    textFont(f);
+    image(angel, 900, 40);
+ // player.rewind();
+  player.play();
+if(level == 0){
+  land.display();
+  Tack.display(xpos, land.getY((int)Tack.x) - 85);
+  if(Tack.x < 600 && Tack.x > 300){
+  String text = "Tack...your journey has begun.  Your journey...to move on.";  
+  text(text, 500, 100);
+  }
+  if(Tack.x > 1000){
+    level++;
+    Tack.display(xpos, land.getY((int)Tack.x) -81);
+  }
+}
+
+
+if(level == 1){
+  text("Click on me to spawn.", 700, 100);
+image(sword, 800, land.getY((int) 800) - 81);
+  if (dead == false) {
+    Tack.display(200, land.getY((int)Tack.x) - 81);
+      lightning.rewind();
+  }
+    if (mousePressed) {
+    if (mouseX > 890 && mouseX < 940 && mouseY > 30 && mouseY < 70) {
       dead = false;
-      keyCode = RIGHT;
       Tack.x = 200;
     }
   }
-  if (dead == false) {
-    Tack.display(xpos, land.getY((int)Tack.x) - 81);
-      lightning.rewind();
-  }
   land.display();
   Cloud.display(0, 0);
-  rect(500, 300, 50, 50);
-  fill(0);
-  textFont(f);
-  text("LIMBO", 500, 100);
-  if (Tack.x < 50 && keyCode == LEFT) {
+  if (Math.random()* 100 < 2.) {
     lightning.play();
     image(blood, Tack.x, ypos - 400);
     Cloud.display(0, 0);
@@ -65,5 +89,7 @@ void draw() {
     System.out.println(Tack.x);
     Tack.die();
   }
+}
+
 } 
 
