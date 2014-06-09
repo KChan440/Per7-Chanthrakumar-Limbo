@@ -5,7 +5,7 @@ Cloudy Cloud;
 Land newLand;
 import ddf.minim.*;
 AudioPlayer player;
-AudioPlayer rain;
+AudioPlayer lightning;
 Minim minim;
 
 float xpos;
@@ -22,8 +22,9 @@ void setup() {
   minim = new Minim(this);
   Tack = new Animation("limbo", 11); 
   Cloud = new Cloudy("frame_", 50);
-  player = minim.loadFile(songs.get(0), 40000);
-  // player.play();
+  player = minim.loadFile(songs.get(0), 4000);
+  lightning = minim.loadFile(songs.get(2), 4000);
+  player.play();
   land = new Land(500, 0);
   newLand = new Land(250, 0);
   xpos = 200;
@@ -43,11 +44,12 @@ void draw() {
     if (mouseX > 500 && mouseX < 550 && mouseY>300 && mouseY<350) {
       dead = false;
       keyCode = RIGHT;
-      xpos = 200;
+      Tack.x = 200;
     }
   }
   if (dead == false) {
     Tack.display(xpos, land.getY((int)Tack.x) - 81);
+      lightning.rewind();
   }
   land.display();
   Cloud.display(0, 0);
@@ -56,6 +58,7 @@ void draw() {
   textFont(f);
   text("LIMBO", 500, 100);
   if (Tack.x < 50 && keyCode == LEFT) {
+    lightning.play();
     image(blood, Tack.x, ypos - 400);
     Cloud.display(0, 0);
     land.display();
